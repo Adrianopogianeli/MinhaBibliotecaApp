@@ -1,11 +1,13 @@
 package br.com.fiap.minhabibliotecaapp
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import br.com.fiap.minhabiblioteca.Calculadora
+import br.com.fiap.minhabiblioteca.CustomToast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +16,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val calc = Calculadora()
-        val resultado = calc.somar(1,1)
+        var calc = Calculadora()
+        var resultado = calc.somar(1,1)
+        var alerta : String = resultado.toString()
 
-        Toast.LENGTH_LONG.toString(resultado).toShort()
+        val texto : TextView =  findViewById<TextView>(R.id.texto)
+        texto.text = alerta
 
+        CustomToast().showToast(applicationContext,alerta)
 
-
-        Log.ERROR.toString(resultado)
 
     }
 }
